@@ -25,8 +25,15 @@ function playRPSround(playerSelection, computerSelection){
     else if (playerSelection.toLowerCase() == computerSelection.toLowerCase()){
         return ("It's a draw!");
     }
+    else{
+        return null;
+    }
 }
 
-const player = "PaPeR";
-const comp = getComputerChoice();
-console.log(playRPSround(player,comp));
+function game(){
+    let x = parseInt(prompt("How many rounds do you want to play? : "));
+    for (let i = 0; i<x; i++){
+        console.log(playRPSround(prompt("What is your choice (Rock, Paper, Scissors)? : "), getComputerChoice()));
+    }
+    
+}
