@@ -30,10 +30,29 @@ function playRPSround(playerSelection, computerSelection){
     }
 }
 
-function game(){
-    let x = parseInt(prompt("How many rounds do you want to play? : "));
-    for (let i = 0; i<x; i++){
-        console.log(playRPSround(prompt("What is your choice (Rock, Paper, Scissors)? : "), getComputerChoice()));
-    }
+//function game(){
+    //let x = parseInt(prompt("How many rounds do you want to play? : "));
+let player_score = 0;
+let comp_score = 0;
+let player_selected;
+let score = document.createElement('div');
+let buttons = document.querySelectorAll(".choices button");
+let choice = document.querySelector(".choices");
+        
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        result = playRPSround(button.id, getComputerChoice());
+        if (result.slice(0,5) == "You W"){
+            player_score++;
+        }
+        else if (result.slice(0,5) == "You L"){
+            comp_score++;
+        }
+        score.textContent = ("Player : " + player_score + "\nComputer : " + comp_score);
+        choice.appendChild(score);
+    })
+})
+
     
-}
+//}
+
